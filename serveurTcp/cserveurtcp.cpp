@@ -4,6 +4,7 @@ CServeurTcp::CServeurTcp(QObject *parent) :
     QTcpServer(parent)
 {
     m_noport = PORTPARDEFAUT;
+    connectedClient = 0;
     init();
 }
 
@@ -41,22 +42,33 @@ int CServeurTcp::init()
 
 void CServeurTcp::onNewConnectionClient()
 {
-    QString mess="Un client vient de se connecter";
-    qDebug() << mess;
-    QTcpSocket *newClient = this->nextPendingConnection();
-    qDebug() << "Nouvelle connection : " << newClient;
-    if (newClient == NULL)
+    if (connectedClient)
+    {
+        qDebug() << "Client déjà connecté !";
         emit sigErreur(QAbstractSocket::ConnectionRefusedError);
-    connect(newClient, SIGNAL(readyRead()), this, SLOT(onReadyReadClient()));
-    connect(newClient, SIGNAL(disconnected()), this, SLOT(OnDisconnectedClient()));
-    listeClients.append(newClient);
-    emit sigEvenementServeur("CON");
-    emit sigAdrClient(newClient->localAddress().toString());
-    emit sigMajClients(listeClients);
+
+    } else {
+        QString mess="Un client vient de se connecter";
+        this->changeConnectedClient();
+        qDebug() << "changeConnectedClient : " << connectedClient;
+        qDebug() << mess;
+        QTcpSocket *newClient = this->nextPendingConnection();
+        qDebug() << "Nouvelle connection : " << newClient;
+        if (newClient == NULL)
+            emit sigErreur(QAbstractSocket::ConnectionRefusedError);
+        connect(newClient, SIGNAL(readyRead()), this, SLOT(onReadyReadClient()));
+        connect(newClient, SIGNAL(disconnected()), this, SLOT(OnDisconnectedClient()));
+        listeClients.append(newClient);
+        emit sigEvenementServeur("CON");
+        emit sigAdrClient(newClient->localAddress().toString());
+        emit sigMajClients(listeClients);
+    }
 }
 
 void CServeurTcp::OnDisconnectedClient()
 {
+    this->changeConnectedClient();
+    qDebug() << "changeConnectedClient : " << connectedClient;
     QTcpSocket *client = (QTcpSocket *)sender();
     emit sigEvenementServeur("DEC");
     listeClients.removeOne(client);
@@ -78,6 +90,15 @@ void CServeurTcp::onReadyReadClient()
     ba=client->readAll();
     qDebug() << "Client : " << client << ba.size() << " Caracteres reçus";
     emit sigDataClient(client->localAddress().toString(), QString(ba));
+}
+
+void CServeurTcp::changeConnectedClient() {
+    if (connectedClient)
+    {
+        this->connectedClient = 0;
+    } else {
+        this->connectedClient = 1;
+    }
 }
 
 

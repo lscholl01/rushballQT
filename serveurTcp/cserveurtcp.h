@@ -15,6 +15,7 @@ public:
     explicit CServeurTcp(QObject *parent = 0, quint16 noPort = 2222);
     ~CServeurTcp();
     int emettreVersClient(QString mess);
+    void changeConnectedClient();
 
 signals:
     void sigEvenementServeur(QString eve);
@@ -31,6 +32,7 @@ public slots:
 
 private:
     int init();
+    bool connectedClient; //1 = connected   0 = non connected
     quint16 m_noport;
     QList<QTcpSocket *> listeClients;
 };

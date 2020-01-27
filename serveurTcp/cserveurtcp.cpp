@@ -60,7 +60,8 @@ void CServeurTcp::OnDisconnectedClient()
     QTcpSocket *client = (QTcpSocket *)sender();
     emit sigEvenementServeur("DEC");
     listeClients.removeOne(client);
-    delete client;
+    //delete client;
+    client->deleteLater();
     emit sigMajClients(listeClients);
 }
 

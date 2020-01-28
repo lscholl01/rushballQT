@@ -6,85 +6,628 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>754</width>
-    <height>661</height>
+    <width>726</width>
+    <height>609</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label">
+   <widget class="QTabWidget" name="tab">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>40</y>
-      <width>241</width>
-      <height>21</height>
+      <x>8</x>
+      <y>9</y>
+      <width>711</width>
+      <height>531</height>
      </rect>
     </property>
-    <property name="text">
-     <string>écoute sur le port 2222</string>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
-   </widget>
-   <widget class="QLineEdit" name="leTexte">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>80</y>
-      <width>321</width>
-      <height>33</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="teTexte">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>200</y>
-      <width>631</width>
-      <height>381</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pbEnvoyer">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>50</y>
-      <width>181</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>envoyer</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="cbListe">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>150</y>
-      <width>271</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>160</y>
-      <width>291</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>liste des clients connectés</string>
-    </property>
+    <widget class="QWidget" name="tab_jeu">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+     <widget class="QLineEdit" name="nomJoueur1">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>30</y>
+        <width>113</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nomJoueur2">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>30</y>
+        <width>113</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nomJoueur3">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>30</y>
+        <width>113</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nomJoueur4">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>30</y>
+        <width>113</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="quiClient">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>31</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modeDeJeu">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>71</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="valeurDuJeu">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>71</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cibleActif">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>160</y>
+        <width>31</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cibleMax">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>200</y>
+        <width>31</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pannel1">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>170</y>
+        <width>71</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pannel2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>170</y>
+        <width>71</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pannel3">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>170</y>
+        <width>71</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pannel4">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>170</y>
+        <width>71</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pannel5">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>170</y>
+        <width>71</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pannel6">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>170</y>
+        <width>71</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupJoker">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>390</y>
+        <width>120</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Joker</string>
+      </property>
+      <widget class="QLineEdit" name="colorJoker">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>21</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="nbrPointJoker">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>51</width>
+         <height>33</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupColor1">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>390</y>
+        <width>120</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Cible 1</string>
+      </property>
+      <widget class="QLineEdit" name="color1">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>21</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="nbrPoint1">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>40</y>
+         <width>51</width>
+         <height>33</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupColor2">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>390</y>
+        <width>120</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Cible 2</string>
+      </property>
+      <widget class="QLineEdit" name="color2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>21</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="nbrPoint2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>51</width>
+         <height>33</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupColor3">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>390</y>
+        <width>120</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Cible 3</string>
+      </property>
+      <widget class="QLineEdit" name="color3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>21</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="nbrPoint3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>51</width>
+         <height>33</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupColor4">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>390</y>
+        <width>120</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Cible 4</string>
+      </property>
+      <widget class="QLineEdit" name="color4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>21</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="nbrPoint4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>51</width>
+         <height>33</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>10</y>
+        <width>67</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Joueur 1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>0</y>
+        <width>67</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Joueur 2</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>0</y>
+        <width>67</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Joueur 3</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>0</y>
+        <width>67</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Joueur 4</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>67</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Client</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>80</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mode de jeu</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>110</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Objectif de jeu</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>120</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nbr de cibles</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>240</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nbr max de cibles</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>140</y>
+        <width>301</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Panneau utilisé pendant la partie</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_server">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+     <widget class="QLineEdit" name="leTexte">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>321</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbListe">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>120</y>
+        <width>271</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="teTexte">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>681</width>
+        <height>311</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>130</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>liste des clients connectés</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbEnvoyer">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>20</y>
+        <width>181</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>envoyer</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>241</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>écoute sur le port 2222</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -92,7 +635,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>754</width>
+     <width>726</width>
      <height>27</height>
     </rect>
    </property>

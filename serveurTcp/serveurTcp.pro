@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     cserveurtcp.cpp \
-    cihmappserveurtcp.cpp
+    cihmappserveurtcp.cpp \
+    ctrame.cpp
 
 HEADERS  += mainwindow.h \
     cserveurtcp.h \
-    cihmappserveurtcp.h
+    cihmappserveurtcp.h \
+    ctrame.h
 
 FORMS    += \
     CIhmAppServeurTcp

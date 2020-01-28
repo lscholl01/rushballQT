@@ -89,6 +89,7 @@ void CServeurTcp::onReadyReadClient()
     QTcpSocket *client = (QTcpSocket *)sender();
     ba=client->readAll();
     qDebug() << "Client : " << client << ba.size() << " Caracteres reçus";
+    qDebug() << ba;
     emit sigDataClient(client->localAddress().toString(), QString(ba));
 }
 

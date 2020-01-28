@@ -9,6 +9,15 @@ CIhmAppServeurTcp::CIhmAppServeurTcp(QWidget *parent) :
     ui->setupUi(this);
     ui->pbEnvoyer->setEnabled(false);
 
+    QPalette palette;
+    palette.setColor(QPalette::Base, Qt::gray);
+    ui->pannel1->setPalette(palette);
+    ui->pannel2->setPalette(palette);
+    ui->pannel3->setPalette(palette);
+    ui->pannel4->setPalette(palette);
+    ui->pannel5->setPalette(palette);
+    ui->pannel6->setPalette(palette);
+
     serv = new CServeurTcp(this, PORT);
     connect(serv, SIGNAL(sigEvenementServeur(QString)), this, SLOT(onEvenementServeur(QString)));
     connect(serv, SIGNAL(sigDataClient(QString,QString)), this, SLOT(onDataRecu(QString,QString)));

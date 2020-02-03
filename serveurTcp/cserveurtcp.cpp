@@ -1,4 +1,5 @@
 #include "cserveurtcp.h"
+#include "ctrame.h"
 
 CServeurTcp::CServeurTcp(QObject *parent) :
     QTcpServer(parent)
@@ -90,6 +91,8 @@ void CServeurTcp::onReadyReadClient()
     ba=client->readAll();
     qDebug() << "Client : " << client << ba.size() << " Caracteres reçus";
     qDebug() << ba;
+    QString trame = QString::fromStdString(ba.toStdString());
+    CTrame *game = new CTrame(trame);
     emit sigDataClient(client->localAddress().toString(), QString(ba));
 }
 

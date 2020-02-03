@@ -1,10 +1,71 @@
 #include "ctrame.h"
+#include <QDebug>
 
-CTrame::CTrame(QString trame)  //exemple de trame   :P|3|        Billy;          Bob;      Patrick;             |T;300| 2; 3; 4; 5|4; 6|1; 1;20|3| 2; 5| 3; 7| 4; 9| 5;15|azertyuiopqsdfgh|*
+CTrame::CTrame(QString trame)  //exemple de trame   :P|3|        Billy;          Bob;      Patrick;             |T;S;300| 2|4; 6|1;40|3| 1; 5| 2; 7| 3; 9| 4;15| 5;17| 6;20|azertyuiopqsdfgh|*
 {
     //besoin de démonter la trame reçu afin de séparer les différent composant
-    this->nbrJoueur = QStringRef(trame,1,1);
-    QDebug() << this->nbrJoueur;
+    this->clientType = QStringRef(&trame,1,1).at(0);
+
+    this->nbrJoueur = QStringRef(&trame,3,1).toInt();
+
+    for (int i=1; i <= getNbrJoueur(); i++) {
+        switch(i){
+            case 1:
+                this->nomJoueur1 = QStringRef(&trame,5,13).toString();
+                break;
+            case 2:
+                this->nomJoueur2 = QStringRef(&trame,19,13).toString();
+                break;
+            case 3:
+                this->nomJoueur3 = QStringRef(&trame,33,13).toString();
+                break;
+            case 4:
+                this->NomJoueur4 = QStringRef(&trame,47,13).toString();
+                break;
+            default:
+                break;
+        }
+    }
+
+    this->modeDeJeu = QStringRef(&trame,61,1).at(0);
+
+    switch(this->modeDeJeu.unicode()) {
+    case 'T':
+        this->varianteDeJeu = QStringRef(&trame,63,1).at(0);
+        this->objectifDeJeu = QStringRef(&trame,65,3).toInt();
+        break;
+    case 'M':
+        this->varianteDeJeu = QStringRef(&trame,63,1).at(0);
+        this->objectifDeJeu = QStringRef(&trame,65,3).toInt();
+        break;
+    case 'B':
+        this->varianteDeJeu = QStringRef(&trame,63,1).at(0);
+        break;
+    }
+
+    this->faute = QStringRef(&trame,69/*nice*/,2).toInt();
+
+    this->nbrPanneauDeJeu = QStringRef(&trame,72,1).toInt();
+    this->nbrCibleAllumer = QStringRef(&trame,74,2).toInt();
+
+    qDebug() << this->nbrJoueur;
+    qDebug() << "joueur 1 :" +this->nomJoueur1;
+    qDebug() << "joueur 2 :" +this->nomJoueur2;
+    qDebug() << "joueur 3 :" +this->nomJoueur3;
+    qDebug() << "joueur 4 :" +this->NomJoueur4;
+    qDebug() << "mode de jeu :" ;
+    qDebug() << this->modeDeJeu;
+    qDebug() << "variante de jeu :";
+    qDebug() << this->varianteDeJeu;
+    if (this->modeDeJeu.unicode() != 'B') {
+        qDebug() << "objectif de jeu" ;
+        qDebug() << this->objectifDeJeu;
+    }
+    qDebug() << this->faute;
+
+
+
+
 }
 
 CTrame::~CTrame()
@@ -15,7 +76,7 @@ CTrame::~CTrame()
 //--------getter--------
 
 
-unsigned char CTrame::getClientType() const
+QChar CTrame::getClientType() const
 {
     return clientType;
 }
@@ -45,7 +106,7 @@ QString CTrame::getNomJoueur4() const
     return NomJoueur4;
 }
 
-char CTrame::getModeDeJeu() const
+QChar CTrame::getModeDeJeu() const
 {
     return modeDeJeu;
 }
@@ -53,26 +114,6 @@ char CTrame::getModeDeJeu() const
 int CTrame::getObjectifDeJeu() const
 {
     return objectifDeJeu;
-}
-
-int CTrame::getFauteRaterPanneau() const
-{
-    return fauteRaterPanneau;
-}
-
-int CTrame::getFauteMauvaisJoueur() const
-{
-    return fauteMauvaisJoueur;
-}
-
-int CTrame::getFauteJongle() const
-{
-    return fauteJongle;
-}
-
-int CTrame::getFauteZoneDeJeu() const
-{
-    return fauteZoneDeJeu;
 }
 
 int CTrame::getNbrPanneauDeJeu() const
@@ -138,6 +179,16 @@ int CTrame::getCouleurCible4() const
 int CTrame::getScoreCible4() const
 {
     return scoreCible4;
+}
+
+int CTrame::getFaute() const
+{
+    return faute;
+}
+
+QChar CTrame::getVarianteDeJeu() const
+{
+    return varianteDeJeu;
 }
 
 //--------fin-getter---------

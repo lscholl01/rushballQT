@@ -3,8 +3,9 @@
 
 #include <QString>
 #include <QDebug>
+#include <QChar>
 
-class CTrame
+class CTrame : public QObject
 {
     Q_OBJECT
 
@@ -13,18 +14,14 @@ public:
     ~CTrame();
 
     bool getJokerPresent() const;
-    unsigned char getClientType() const;
+    QChar getClientType() const;
     int getNbrJoueur() const;
     QString getNomJoueur1() const;
     QString getNomJoueur2() const;
     QString getNomJoueur3() const;
     QString getNomJoueur4() const;
-    char getModeDeJeu() const;
+    QChar getModeDeJeu() const;
     int getObjectifDeJeu() const;
-    int getFauteRaterPanneau() const;
-    int getFauteMauvaisJoueur() const;
-    int getFauteJongle() const;
-    int getFauteZoneDeJeu() const;
     int getNbrPanneauDeJeu() const;
     int getNbrCibleAllumer() const;
     int getCouleurJoker() const;
@@ -37,9 +34,11 @@ public:
     int getScoreCible3() const;
     int getCouleurCible4() const;
     int getScoreCible4() const;
+    int getFaute() const;
+    QChar getVarianteDeJeu() const;
 
 private:
-    unsigned char clientType; //P = PC    M = Mobile
+    QChar clientType; //P = PC    M = Mobile
 
     int nbrJoueur;
     QString nomJoueur1;
@@ -47,13 +46,11 @@ private:
     QString nomJoueur3;
     QString NomJoueur4;
 
-    char modeDeJeu;  //T = Temps     S = Score
+    QChar modeDeJeu;  //T = Temps     S = Score
     int objectifDeJeu; // Temps en seconde et Score en points
+    QChar varianteDeJeu;
 
-    int fauteRaterPanneau;
-    int fauteMauvaisJoueur;
-    int fauteJongle;
-    int fauteZoneDeJeu;
+    int faute;
 
     int nbrPanneauDeJeu;
     int nbrCibleAllumer;
@@ -73,6 +70,12 @@ private:
 
     int couleurCible4;
     int scoreCible4;
+
+    int couleurCible5;
+    int scoreCible5;
+
+    int couleurCible6;
+    int scoreCible6;
 };
 
 

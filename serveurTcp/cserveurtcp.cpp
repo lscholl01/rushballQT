@@ -92,8 +92,10 @@ void CServeurTcp::onReadyReadClient()
     qDebug() << "Client : " << client << ba.size() << " Caracteres reçus";
     qDebug() << ba;
     QString trame = QString::fromStdString(ba.toStdString());
-    CTrame *game = new CTrame(trame);
+    CTrame *game = new CTrame(nullptr, trame);
+    emit sigAfficherResumerTrame(game);
     emit sigDataClient(client->localAddress().toString(), QString(ba));
+
 }
 
 void CServeurTcp::changeConnectedClient() {

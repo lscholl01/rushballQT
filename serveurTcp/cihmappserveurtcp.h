@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QList>
 #include "cserveurtcp.h"
+#include "ctrame.h"
 
 #define PORT 2222
 
@@ -20,6 +21,7 @@ class CIhmAppServeurTcp : public QMainWindow
 public:
     explicit CIhmAppServeurTcp(QWidget *parent = 0);
     ~CIhmAppServeurTcp();
+    void afficherResumerTrame(CTrame trame);
 
 private slots:
     void on_pbEnvoyer_clicked();
@@ -28,6 +30,8 @@ private slots:
     void onErreurServeur(QAbstractSocket::SocketError err);
     void onAdrClient(QString adrClient);
     void onListeMajClients(QList<QTcpSocket *> liste);
+    void onAfficherResumerTrame(CTrame *trame);
+
 
 private:
     Ui::CIhmAppServeurTcp *ui;

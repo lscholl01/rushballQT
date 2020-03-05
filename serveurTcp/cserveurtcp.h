@@ -4,6 +4,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDebug>
+#include "ctrame.h"
 
 #define PORTPARDEFAUT 2222
 
@@ -23,6 +24,7 @@ signals:
     void sigDataClient(QString adrIpClient, QString data);
     void sigAdrClient(QString adrClient);
     void sigMajClients(QList<QTcpSocket *> liste);
+    void sigAfficherResumerTrame(CTrame *trame);
 
 public slots:
     void onNewConnectionClient();

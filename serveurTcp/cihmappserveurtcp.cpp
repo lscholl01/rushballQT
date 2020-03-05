@@ -1,5 +1,7 @@
 #include "cihmappserveurtcp.h"
 #include "ui_CIhmAppServeurTcp.h"
+#include <QList>
+#include <QPalette>
 
 CIhmAppServeurTcp::CIhmAppServeurTcp(QWidget *parent) :
     QMainWindow(parent),
@@ -24,6 +26,8 @@ CIhmAppServeurTcp::CIhmAppServeurTcp(QWidget *parent) :
     connect(serv, SIGNAL(sigErreur(QAbstractSocket::SocketError)), this, SLOT(onErreurServeur(QAbstractSocket::SocketError)));
     connect(serv, SIGNAL(sigAdrClient(QString)), this, SLOT(onAdrClient(QString)));
     connect(serv, SIGNAL(sigMajClients(QList<QTcpSocket*>)), this, SLOT(onListeMajClients(QList<QTcpSocket*>)));
+    connect(serv, &CServeurTcp::sigAfficherResumerTrame, this, &CIhmAppServeurTcp::onAfficherResumerTrame);
+    //connect(serv, SIGNAL(sigAfficherResumerTrame(CTrame)), this, SLOT(onAfficherResumerTrame(CTrame)));
 
 }
 
@@ -84,4 +88,76 @@ void CIhmAppServeurTcp::onListeMajClients(QList<QTcpSocket *> liste)
     }
     if (liste.size()==0)
         ui->pbEnvoyer->setEnabled(false);
+}
+
+void CIhmAppServeurTcp::onAfficherResumerTrame(CTrame *trame) {
+
+    QPalette palette;
+
+    /*QPalette pBlue = new QPalette(QPalette::Base, Qt::blue);
+    QPalette pCyan = new QPalette(QPalette::Base, Qt::cyan);
+    QPalette pWhite = new QPalette(QPalette::Base, Qt::white);
+    QPalette pMagenta = new QPalette(QPalette::Base, Qt::magenta);
+    QPalette pRed = new QPalette(QPalette::Base, Qt::red);
+    QPalette pGreen = new QPalette(QPalette::Base, Qt::green);
+
+    QList<QPalette> listPalette = new QList<QPalette>(*pBlue, *pCyan, *pWhite, *pMagenta, *pRed, *pGreen);
+    */
+    palette.setColor(QPalette::Base, Qt::gray);
+    ui->pannel1->setPalette(palette);
+    ui->pannel2->setPalette(palette);
+    ui->pannel3->setPalette(palette);
+    ui->pannel4->setPalette(palette);
+    ui->pannel5->setPalette(palette);
+    ui->pannel6->setPalette(palette);
+
+    palette.setColor(QPalette::Base,Qt::blue);
+
+    ui->quiClient->setText(QString(trame->getClientType()));
+
+    ui->nomJoueur1->setText(trame->getNomJoueur1());
+    ui->nomJoueur2->setText(trame->getNomJoueur2());
+    ui->nomJoueur3->setText(trame->getNomJoueur3());
+    ui->nomJoueur4->setText(trame->getNomJoueur4());
+
+    ui->modeDeJeu->setText(QString(trame->getModeDeJeu()));
+    ui->varianteDeJeu->setText(QString(trame->getVarianteDeJeu()));
+    ui->valeurDuJeu->setText(QString(trame->getObjectifDeJeu()));
+
+    for (int i = 0; i < trame->getNbrPanneauDeJeu(); i++) {
+    switch (i){
+    case 1:
+        ui->pannel1->setPalette(palette);
+        break;
+    case 2:
+        ui->pannel2->setPalette(palette);
+        break;
+    case 3:
+        ui->pannel3->setPalette(palette);
+        break;
+    case 4:
+        ui->pannel4->setPalette(palette);
+        break;
+    case 5:
+        ui->pannel5->setPalette(palette);
+        break;
+    case 6:
+        ui->pannel6->setPalette(palette);
+        break;
+    }
+    }
+
+    ui->cibleActif->setText(QString(trame->getNbrCibleAllumer()));
+    ui->cibleMax->setText(QString(trame->getNbrPanneauDeJeu()*3));
+
+    if (trame->getJokerPresent()) {
+        ui->colorJoker->setPalette(Qt::yellow);
+        ui->nbrPointJoker->setText(QString(trame->getScoreJoker()));
+    }
+
+    for (int i = 0; i < trame->getNbrCibleDifferente();i++){
+
+    }
+
+
 }

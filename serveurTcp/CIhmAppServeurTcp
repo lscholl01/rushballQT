@@ -17,8 +17,8 @@
    <widget class="QTabWidget" name="tab">
     <property name="geometry">
      <rect>
-      <x>8</x>
-      <y>9</y>
+      <x>0</x>
+      <y>0</y>
       <width>711</width>
       <height>531</height>
      </rect>
@@ -112,7 +112,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>110</y>
+        <y>140</y>
         <width>71</width>
         <height>33</height>
        </rect>
@@ -267,7 +267,7 @@
      <widget class="QGroupBox" name="groupColor1">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>100</x>
         <y>390</y>
         <width>120</width>
         <height>91</height>
@@ -306,7 +306,7 @@
      <widget class="QGroupBox" name="groupColor2">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>180</x>
         <y>390</y>
         <width>120</width>
         <height>91</height>
@@ -345,7 +345,7 @@
      <widget class="QGroupBox" name="groupColor3">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>260</x>
         <y>390</y>
         <width>120</width>
         <height>91</height>
@@ -384,7 +384,7 @@
      <widget class="QGroupBox" name="groupColor4">
       <property name="geometry">
        <rect>
-        <x>560</x>
+        <x>340</x>
         <y>390</y>
         <width>120</width>
         <height>91</height>
@@ -501,8 +501,8 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>110</y>
+        <x>0</x>
+        <y>180</y>
         <width>101</width>
         <height>21</height>
        </rect>
@@ -548,6 +548,130 @@
       </property>
       <property name="text">
        <string>Panneau utilisé pendant la partie</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupColor1_2">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>390</y>
+        <width>120</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Cible 5</string>
+      </property>
+      <widget class="QLineEdit" name="color5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>21</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="nbrPoint5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>40</y>
+         <width>51</width>
+         <height>33</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupColor1_3">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>390</y>
+        <width>120</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Cible 6</string>
+      </property>
+      <widget class="QLineEdit" name="color6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>21</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="nbrPoint6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>40</y>
+         <width>51</width>
+         <height>33</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLineEdit" name="boxCR16">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>370</y>
+        <width>113</width>
+        <height>91</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>340</y>
+        <width>67</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>cr16</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="varianteDeJeu">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>71</width>
+        <height>33</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>110</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Variante de jeu</string>
       </property>
      </widget>
     </widget>

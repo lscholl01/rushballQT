@@ -1,6 +1,7 @@
 #ifndef CTRAME_H
 #define CTRAME_H
 
+#include <QObject>
 #include <QString>
 #include <QDebug>
 #include <QChar>
@@ -10,7 +11,8 @@ class CTrame : public QObject
     Q_OBJECT
 
 public:
-    explicit CTrame(QString trame);
+    explicit CTrame(QObject *parent = nullptr);
+    explicit CTrame(QObject *parent = nullptr, QString trame = "");
     ~CTrame();
 
     bool getJokerPresent() const;
@@ -34,8 +36,17 @@ public:
     int getScoreCible3() const;
     int getCouleurCible4() const;
     int getScoreCible4() const;
+    int getCouleurCible5() const;
+    int getScoreCible5() const;
+    int getCouleurCible6() const;
+    int getScoreCible6() const;
     int getFaute() const;
     QChar getVarianteDeJeu() const;
+
+    int getNbrCibleDifferente() const;
+
+    
+    QString getCr16() const;
 
 private:
     QChar clientType; //P = PC    M = Mobile
@@ -45,6 +56,8 @@ private:
     QString nomJoueur2;
     QString nomJoueur3;
     QString NomJoueur4;
+
+    QString cr16;
 
     QChar modeDeJeu;  //T = Temps     S = Score
     int objectifDeJeu; // Temps en seconde et Score en points
@@ -58,6 +71,8 @@ private:
     bool jokerPresent;
     int couleurJoker;
     int scoreJoker;
+    
+    int nbrCibleDifferente;
 
     int couleurCible1;
     int scoreCible1;
@@ -76,6 +91,8 @@ private:
 
     int couleurCible6;
     int scoreCible6;
+
+
 };
 
 

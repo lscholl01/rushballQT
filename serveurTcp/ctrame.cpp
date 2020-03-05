@@ -1,7 +1,14 @@
 #include "ctrame.h"
 #include <QDebug>
 
-CTrame::CTrame(QString trame)  //exemple de trame   :P|3|        Billy;          Bob;      Patrick;             |T;S;300| 2|4; 6|1;40|3| 1; 5| 2; 7| 3; 9| 4;15| 5;17| 6;20|azertyuiopqsdfgh|*
+CTrame::CTrame(QObject *parent):
+    QObject(parent)
+{
+
+}
+
+CTrame::CTrame(QObject *parent, QString trame):  //exemple de trame   :P|3|        Billy;          Bob;      Patrick;             |T;S;300| 2|4; 6|1;40|6|1; 5|2; 7|3; 9|4;15|5;17|6;20|abcd|*
+    QObject(parent)
 {
     //besoin de démonter la trame reçu afin de séparer les différent composant
     this->clientType = QStringRef(&trame,1,1).at(0);
@@ -43,10 +50,60 @@ CTrame::CTrame(QString trame)  //exemple de trame   :P|3|        Billy;         
         break;
     }
 
-    this->faute = QStringRef(&trame,69/*nice*/,2).toInt();
+    this->faute = QStringRef(&trame,69,2).toInt();
 
     this->nbrPanneauDeJeu = QStringRef(&trame,72,1).toInt();
     this->nbrCibleAllumer = QStringRef(&trame,74,2).toInt();
+
+    if (QStringRef(&trame,77,1).toInt() == 1) {
+        this->jokerPresent = true;
+        this->scoreJoker = QStringRef(&trame,79,2).toInt();
+    } else {
+        this->jokerPresent = false;
+    }
+
+    this->nbrCibleDifferente = QStringRef(&trame,82,1).toInt();
+
+    for (int i = 1; i <= this->nbrCibleDifferente ;i++ ) {
+        switch (i) {
+            case 1:
+                this->couleurCible1 = QStringRef(&trame,84,1).toInt();
+                this->scoreCible1 = QStringRef(&trame,86,2).toInt();
+                break;
+            case 2:
+                this->couleurCible2 = QStringRef(&trame,89,1).toInt();
+                this->scoreCible2 = QStringRef(&trame,91,2).toInt();
+                 break;
+            case 3:
+                this->couleurCible3 = QStringRef(&trame,94,1).toInt();
+                this->scoreCible3 = QStringRef(&trame,96,2).toInt();
+                  break;
+            case 4:
+                this->couleurCible4 = QStringRef(&trame,99,1).toInt();
+                this->scoreCible4 = QStringRef(&trame,101,2).toInt();
+                  break;
+            case 5:
+                this->couleurCible5 = QStringRef(&trame,104,1).toInt();
+                this->scoreCible5 = QStringRef(&trame,106,2).toInt();
+                  break;
+            case 6:
+                this->couleurCible6 = QStringRef(&trame,19,1).toInt();
+                this->scoreCible6 = QStringRef(&trame,111,2).toInt();
+                  break;
+            default:
+                break;
+        }
+    }
+
+    this->cr16 = QStringRef(&trame,114,4).at(0);
+
+    //fin de la decomposition de la trame
+    //début de l'affichage dans l'ihm
+
+
+
+
+
 
     qDebug() << this->nbrJoueur;
     qDebug() << "joueur 1 :" +this->nomJoueur1;
@@ -62,9 +119,8 @@ CTrame::CTrame(QString trame)  //exemple de trame   :P|3|        Billy;         
         qDebug() << this->objectifDeJeu;
     }
     qDebug() << this->faute;
-
-
-
+    qDebug() << this->nbrPanneauDeJeu;
+    qDebug() << this->nbrCibleAllumer;
 
 }
 
@@ -189,6 +245,36 @@ int CTrame::getFaute() const
 QChar CTrame::getVarianteDeJeu() const
 {
     return varianteDeJeu;
+}
+
+int CTrame::getNbrCibleDifferente() const
+{
+    return nbrCibleDifferente;
+}
+
+QString CTrame::getCr16() const
+{
+    return cr16;
+}
+
+int CTrame::getCouleurCible5() const
+{
+    return couleurCible5;
+}
+
+int CTrame::getScoreCible5() const
+{
+    return scoreCible5;
+}
+
+int CTrame::getCouleurCible6() const
+{
+    return couleurCible6;
+}
+
+int CTrame::getScoreCible6() const
+{
+    return scoreCible6;
 }
 
 //--------fin-getter---------

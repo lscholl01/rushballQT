@@ -85,6 +85,8 @@ public:
     QLabel *label_13;
     QLineEdit *varianteDeJeu;
     QLabel *label_14;
+    QLineEdit *nbrPointFaute;
+    QLabel *label_15;
     QWidget *tab_server;
     QLineEdit *leTexte;
     QComboBox *cbListe;
@@ -184,7 +186,7 @@ public:
         groupColor1->setGeometry(QRect(100, 390, 120, 91));
         color1 = new QLineEdit(groupColor1);
         color1->setObjectName(QStringLiteral("color1"));
-        color1->setGeometry(QRect(0, 20, 21, 21));
+        color1->setGeometry(QRect(0, 20, 51, 21));
         color1->setReadOnly(true);
         nbrPoint1 = new QLineEdit(groupColor1);
         nbrPoint1->setObjectName(QStringLiteral("nbrPoint1"));
@@ -195,7 +197,7 @@ public:
         groupColor2->setGeometry(QRect(180, 390, 120, 91));
         color2 = new QLineEdit(groupColor2);
         color2->setObjectName(QStringLiteral("color2"));
-        color2->setGeometry(QRect(10, 20, 21, 21));
+        color2->setGeometry(QRect(10, 20, 51, 21));
         color2->setReadOnly(true);
         nbrPoint2 = new QLineEdit(groupColor2);
         nbrPoint2->setObjectName(QStringLiteral("nbrPoint2"));
@@ -206,7 +208,7 @@ public:
         groupColor3->setGeometry(QRect(260, 390, 120, 91));
         color3 = new QLineEdit(groupColor3);
         color3->setObjectName(QStringLiteral("color3"));
-        color3->setGeometry(QRect(10, 20, 21, 21));
+        color3->setGeometry(QRect(10, 20, 51, 21));
         color3->setReadOnly(true);
         nbrPoint3 = new QLineEdit(groupColor3);
         nbrPoint3->setObjectName(QStringLiteral("nbrPoint3"));
@@ -217,7 +219,7 @@ public:
         groupColor4->setGeometry(QRect(340, 390, 120, 91));
         color4 = new QLineEdit(groupColor4);
         color4->setObjectName(QStringLiteral("color4"));
-        color4->setGeometry(QRect(10, 20, 21, 21));
+        color4->setGeometry(QRect(10, 20, 51, 21));
         color4->setReadOnly(true);
         nbrPoint4 = new QLineEdit(groupColor4);
         nbrPoint4->setObjectName(QStringLiteral("nbrPoint4"));
@@ -258,7 +260,7 @@ public:
         groupColor1_2->setGeometry(QRect(440, 390, 120, 91));
         color5 = new QLineEdit(groupColor1_2);
         color5->setObjectName(QStringLiteral("color5"));
-        color5->setGeometry(QRect(0, 20, 21, 21));
+        color5->setGeometry(QRect(0, 20, 51, 21));
         color5->setReadOnly(true);
         nbrPoint5 = new QLineEdit(groupColor1_2);
         nbrPoint5->setObjectName(QStringLiteral("nbrPoint5"));
@@ -269,7 +271,7 @@ public:
         groupColor1_3->setGeometry(QRect(520, 390, 120, 91));
         color6 = new QLineEdit(groupColor1_3);
         color6->setObjectName(QStringLiteral("color6"));
-        color6->setGeometry(QRect(0, 20, 21, 21));
+        color6->setGeometry(QRect(0, 20, 51, 21));
         color6->setReadOnly(true);
         nbrPoint6 = new QLineEdit(groupColor1_3);
         nbrPoint6->setObjectName(QStringLiteral("nbrPoint6"));
@@ -277,7 +279,7 @@ public:
         nbrPoint6->setReadOnly(true);
         boxCR16 = new QLineEdit(tab_jeu);
         boxCR16->setObjectName(QStringLiteral("boxCR16"));
-        boxCR16->setGeometry(QRect(590, 370, 113, 91));
+        boxCR16->setGeometry(QRect(590, 370, 113, 21));
         label_13 = new QLabel(tab_jeu);
         label_13->setObjectName(QStringLiteral("label_13"));
         label_13->setGeometry(QRect(590, 340, 67, 21));
@@ -287,6 +289,12 @@ public:
         label_14 = new QLabel(tab_jeu);
         label_14->setObjectName(QStringLiteral("label_14"));
         label_14->setGeometry(QRect(80, 110, 111, 21));
+        nbrPointFaute = new QLineEdit(tab_jeu);
+        nbrPointFaute->setObjectName(QStringLiteral("nbrPointFaute"));
+        nbrPointFaute->setGeometry(QRect(300, 80, 113, 33));
+        label_15 = new QLabel(tab_jeu);
+        label_15->setObjectName(QStringLiteral("label_15"));
+        label_15->setGeometry(QRect(420, 80, 67, 21));
         tab->addTab(tab_jeu, QString());
         tab_server = new QWidget();
         tab_server->setObjectName(QStringLiteral("tab_server"));
@@ -351,6 +359,7 @@ public:
         groupColor1_3->setTitle(QApplication::translate("CIhmAppServeurTcp", "Cible 6", Q_NULLPTR));
         label_13->setText(QApplication::translate("CIhmAppServeurTcp", "cr16", Q_NULLPTR));
         label_14->setText(QApplication::translate("CIhmAppServeurTcp", "Variante de jeu", Q_NULLPTR));
+        label_15->setText(QApplication::translate("CIhmAppServeurTcp", "faute", Q_NULLPTR));
         tab->setTabText(tab->indexOf(tab_jeu), QApplication::translate("CIhmAppServeurTcp", "Tab 1", Q_NULLPTR));
         leTexte->setText(QString());
         label_2->setText(QApplication::translate("CIhmAppServeurTcp", "liste des clients connect\303\251s", Q_NULLPTR));

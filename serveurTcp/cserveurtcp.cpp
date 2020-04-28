@@ -95,6 +95,7 @@ void CServeurTcp::onReadyReadClient()
     CTrame *game = new CTrame(nullptr, trame);
     emit sigAfficherResumerTrame(game);
     emit sigDataClient(client->localAddress().toString(), QString(ba));
+    delete game;
 
 }
 

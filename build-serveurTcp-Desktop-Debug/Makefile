@@ -52,7 +52,8 @@ SOURCES       = ../serveurTcp/main.cpp \
 		../serveurTcp/mainwindow.cpp \
 		../serveurTcp/cserveurtcp.cpp \
 		../serveurTcp/cihmappserveurtcp.cpp \
-		../serveurTcp/ctrame.cpp moc_mainwindow.cpp \
+		../serveurTcp/ctrame.cpp \
+		../serveurTcp/cjeu.cpp moc_mainwindow.cpp \
 		moc_cserveurtcp.cpp \
 		moc_cihmappserveurtcp.cpp \
 		moc_ctrame.cpp
@@ -61,6 +62,7 @@ OBJECTS       = main.o \
 		cserveurtcp.o \
 		cihmappserveurtcp.o \
 		ctrame.o \
+		cjeu.o \
 		moc_mainwindow.o \
 		moc_cserveurtcp.o \
 		moc_cihmappserveurtcp.o \
@@ -129,11 +131,13 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		../serveurTcp/serveurTcp.pro ../serveurTcp/mainwindow.h \
 		../serveurTcp/cserveurtcp.h \
 		../serveurTcp/cihmappserveurtcp.h \
-		../serveurTcp/ctrame.h ../serveurTcp/main.cpp \
+		../serveurTcp/ctrame.h \
+		../serveurTcp/cjeu.h ../serveurTcp/main.cpp \
 		../serveurTcp/mainwindow.cpp \
 		../serveurTcp/cserveurtcp.cpp \
 		../serveurTcp/cihmappserveurtcp.cpp \
-		../serveurTcp/ctrame.cpp
+		../serveurTcp/ctrame.cpp \
+		../serveurTcp/cjeu.cpp
 QMAKE_TARGET  = serveurTcp
 DESTDIR       = 
 TARGET        = serveurTcp
@@ -292,8 +296,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../serveurTcp/mainwindow.h ../serveurTcp/cserveurtcp.h ../serveurTcp/cihmappserveurtcp.h ../serveurTcp/ctrame.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../serveurTcp/main.cpp ../serveurTcp/mainwindow.cpp ../serveurTcp/cserveurtcp.cpp ../serveurTcp/cihmappserveurtcp.cpp ../serveurTcp/ctrame.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../serveurTcp/mainwindow.h ../serveurTcp/cserveurtcp.h ../serveurTcp/cihmappserveurtcp.h ../serveurTcp/ctrame.h ../serveurTcp/cjeu.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../serveurTcp/main.cpp ../serveurTcp/mainwindow.cpp ../serveurTcp/cserveurtcp.cpp ../serveurTcp/cihmappserveurtcp.cpp ../serveurTcp/ctrame.cpp ../serveurTcp/cjeu.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../serveurTcp/CIhmAppServeurTcp $(DISTDIR)/
 
 
@@ -382,6 +386,9 @@ cihmappserveurtcp.o: ../serveurTcp/cihmappserveurtcp.cpp ../serveurTcp/cihmappse
 
 ctrame.o: ../serveurTcp/ctrame.cpp ../serveurTcp/ctrame.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ctrame.o ../serveurTcp/ctrame.cpp
+
+cjeu.o: ../serveurTcp/cjeu.cpp ../serveurTcp/cjeu.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cjeu.o ../serveurTcp/cjeu.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

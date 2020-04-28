@@ -21,7 +21,6 @@ class CIhmAppServeurTcp : public QMainWindow
 public:
     explicit CIhmAppServeurTcp(QWidget *parent = 0);
     ~CIhmAppServeurTcp();
-    void afficherResumerTrame(CTrame trame);
 
 private slots:
     void on_pbEnvoyer_clicked();

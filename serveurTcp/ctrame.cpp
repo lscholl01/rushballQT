@@ -37,7 +37,7 @@ CTrame::CTrame(QObject *parent, QString trame):  //exemple de trame   :P|3|     
     this->modeDeJeu = QStringRef(&trame,61,1).at(0);
 
     switch(this->modeDeJeu.unicode()) {
-    case 'T':
+    case 'P':
         this->varianteDeJeu = QStringRef(&trame,63,1).at(0);
         this->objectifDeJeu = QStringRef(&trame,65,3).toInt();
         break;
@@ -94,34 +94,9 @@ CTrame::CTrame(QObject *parent, QString trame):  //exemple de trame   :P|3|     
                 break;
         }
     }
-
-    this->cr16 = QStringRef(&trame,114,4).at(0);
+    this->cr16 = QStringRef(&trame,114,4).toString();
 
     //fin de la decomposition de la trame
-    //début de l'affichage dans l'ihm
-
-
-
-
-
-
-    qDebug() << this->nbrJoueur;
-    qDebug() << "joueur 1 :" +this->nomJoueur1;
-    qDebug() << "joueur 2 :" +this->nomJoueur2;
-    qDebug() << "joueur 3 :" +this->nomJoueur3;
-    qDebug() << "joueur 4 :" +this->NomJoueur4;
-    qDebug() << "mode de jeu :" ;
-    qDebug() << this->modeDeJeu;
-    qDebug() << "variante de jeu :";
-    qDebug() << this->varianteDeJeu;
-    if (this->modeDeJeu.unicode() != 'B') {
-        qDebug() << "objectif de jeu" ;
-        qDebug() << this->objectifDeJeu;
-    }
-    qDebug() << this->faute;
-    qDebug() << this->nbrPanneauDeJeu;
-    qDebug() << this->nbrCibleAllumer;
-
 }
 
 CTrame::~CTrame()

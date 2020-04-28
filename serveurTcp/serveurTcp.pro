@@ -27,12 +27,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     cserveurtcp.cpp \
     cihmappserveurtcp.cpp \
-    ctrame.cpp
+    ctrame.cpp \
+    cjeu.cpp
 
 HEADERS  += mainwindow.h \
     cserveurtcp.h \
     cihmappserveurtcp.h \
-    ctrame.h
+    ctrame.h \
+    cjeu.h
 
 FORMS    += \
     CIhmAppServeurTcp

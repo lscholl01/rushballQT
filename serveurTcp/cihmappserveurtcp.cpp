@@ -2,6 +2,7 @@
 #include "ui_CIhmAppServeurTcp.h"
 #include <QList>
 #include <QPalette>
+#include <QVector>
 
 CIhmAppServeurTcp::CIhmAppServeurTcp(QWidget *parent) :
     QMainWindow(parent),
@@ -27,7 +28,6 @@ CIhmAppServeurTcp::CIhmAppServeurTcp(QWidget *parent) :
     connect(serv, SIGNAL(sigAdrClient(QString)), this, SLOT(onAdrClient(QString)));
     connect(serv, SIGNAL(sigMajClients(QList<QTcpSocket*>)), this, SLOT(onListeMajClients(QList<QTcpSocket*>)));
     connect(serv, &CServeurTcp::sigAfficherResumerTrame, this, &CIhmAppServeurTcp::onAfficherResumerTrame);
-    //connect(serv, SIGNAL(sigAfficherResumerTrame(CTrame)), this, SLOT(onAfficherResumerTrame(CTrame)));
 
 }
 
@@ -94,15 +94,7 @@ void CIhmAppServeurTcp::onAfficherResumerTrame(CTrame *trame) {
 
     QPalette palette;
 
-    /*QPalette pBlue = new QPalette(QPalette::Base, Qt::blue);
-    QPalette pCyan = new QPalette(QPalette::Base, Qt::cyan);
-    QPalette pWhite = new QPalette(QPalette::Base, Qt::white);
-    QPalette pMagenta = new QPalette(QPalette::Base, Qt::magenta);
-    QPalette pRed = new QPalette(QPalette::Base, Qt::red);
-    QPalette pGreen = new QPalette(QPalette::Base, Qt::green);
-
-    QList<QPalette> listPalette = new QList<QPalette>(*pBlue, *pCyan, *pWhite, *pMagenta, *pRed, *pGreen);
-    */
+    //mettre les panneau en gris pour remettre a zéro d'une configuration précédente
     palette.setColor(QPalette::Base, Qt::gray);
     ui->pannel1->setPalette(palette);
     ui->pannel2->setPalette(palette);
@@ -111,7 +103,7 @@ void CIhmAppServeurTcp::onAfficherResumerTrame(CTrame *trame) {
     ui->pannel5->setPalette(palette);
     ui->pannel6->setPalette(palette);
 
-    palette.setColor(QPalette::Base,Qt::blue);
+
 
     ui->quiClient->setText(QString(trame->getClientType()));
 
@@ -122,42 +114,112 @@ void CIhmAppServeurTcp::onAfficherResumerTrame(CTrame *trame) {
 
     ui->modeDeJeu->setText(QString(trame->getModeDeJeu()));
     ui->varianteDeJeu->setText(QString(trame->getVarianteDeJeu()));
-    ui->valeurDuJeu->setText(QString(trame->getObjectifDeJeu()));
+    ui->valeurDuJeu->setText(QString::number(trame->getObjectifDeJeu()));
+
+    ui->nbrPointFaute->setText(QString::number(trame->getFaute()));
+
+    palette.setColor(QPalette::Base,Qt::blue);
 
     for (int i = 0; i < trame->getNbrPanneauDeJeu(); i++) {
     switch (i){
-    case 1:
+    case 0:
         ui->pannel1->setPalette(palette);
         break;
-    case 2:
+    case 1:
         ui->pannel2->setPalette(palette);
         break;
-    case 3:
+    case 2:
         ui->pannel3->setPalette(palette);
         break;
-    case 4:
+    case 3:
         ui->pannel4->setPalette(palette);
         break;
-    case 5:
+    case 4:
         ui->pannel5->setPalette(palette);
         break;
-    case 6:
+    case 5:
         ui->pannel6->setPalette(palette);
         break;
     }
     }
 
-    ui->cibleActif->setText(QString(trame->getNbrCibleAllumer()));
-    ui->cibleMax->setText(QString(trame->getNbrPanneauDeJeu()*3));
+    ui->cibleActif->setText(QString::number(trame->getNbrCibleAllumer()));
+    ui->cibleMax->setText(QString::number(trame->getNbrPanneauDeJeu()*3));
 
     if (trame->getJokerPresent()) {
-        ui->colorJoker->setPalette(Qt::yellow);
-        ui->nbrPointJoker->setText(QString(trame->getScoreJoker()));
-    }
-
-    for (int i = 0; i < trame->getNbrCibleDifferente();i++){
-
+        palette.setColor(QPalette::Base,Qt::yellow);
+        ui->colorJoker->setPalette(palette);
+        ui->nbrPointJoker->setText(QString::number(trame->getScoreJoker()));
     }
 
 
+    ui->nbrPoint1->setText(QString::number(trame->getScoreCible1()));
+    ui->nbrPoint2->setText(QString::number(trame->getScoreCible2()));
+    ui->nbrPoint3->setText(QString::number(trame->getScoreCible3()));
+    ui->nbrPoint4->setText(QString::number(trame->getScoreCible4()));
+    ui->nbrPoint5->setText(QString::number(trame->getScoreCible5()));
+    ui->nbrPoint6->setText(QString::number(trame->getScoreCible6()));
+
+    ui->boxCR16->setText(QString(trame->getCr16()));
+
+
+    //blue cyan white magenta red green
+
+    QList<QString> listColor;
+    listColor.append("filler");
+    listColor.append("blue");
+    listColor.append("cyan");
+    listColor.append("white");
+    listColor.append("magenta");
+    listColor.append("red");
+    listColor.append("green");
+
+    for (int i = 1; i <= trame->getNbrCibleDifferente(); i++)  {
+        switch(i) {
+            case 1:
+                ui->color1->setText(QString(listColor[trame->getCouleurCible1()]));
+                break;
+            case 2:
+                ui->color2->setText(QString(listColor[trame->getCouleurCible2()]));
+                break;
+            case 3:
+                ui->color3->setText(QString(listColor[trame->getCouleurCible3()]));
+                break;
+            case 4:
+                ui->color4->setText(QString(listColor[trame->getCouleurCible4()]));
+                break;
+            case 5:
+                ui->color5->setText(QString(listColor[trame->getCouleurCible5()]));
+                break;
+            case 6:
+                ui->color6->setText(QString(listColor[trame->getCouleurCible6()]));
+                break;
+
+
+        }
+    }
+
+
+        /*
+        switch (trame->getCouleurCible1()) {
+            case 1:
+                ui->color1->setPalette(listPalette[1]);
+                break;
+            case 2:
+                ui->color1->setPalette(listPalette[2]);
+                break;
+            case 3:
+                ui->color1->setPalette(listPalette[3]);
+                break;
+            case 4:
+                ui->color1->setPalette(listPalette[4]);
+                break;
+            case 5:
+                ui->color1->setPalette(listPalette[5]);
+                break;
+            case 6:
+                ui->color1->setPalette(listPalette[6]);
+                break;
+        }
+    */
 }

@@ -281,7 +281,7 @@
         <rect>
          <x>0</x>
          <y>20</y>
-         <width>21</width>
+         <width>51</width>
          <height>21</height>
         </rect>
        </property>
@@ -320,7 +320,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>21</width>
+         <width>51</width>
          <height>21</height>
         </rect>
        </property>
@@ -359,7 +359,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>21</width>
+         <width>51</width>
          <height>21</height>
         </rect>
        </property>
@@ -398,7 +398,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>21</width>
+         <width>51</width>
          <height>21</height>
         </rect>
        </property>
@@ -567,7 +567,7 @@
         <rect>
          <x>0</x>
          <y>20</y>
-         <width>21</width>
+         <width>51</width>
          <height>21</height>
         </rect>
        </property>
@@ -606,7 +606,7 @@
         <rect>
          <x>0</x>
          <y>20</y>
-         <width>21</width>
+         <width>51</width>
          <height>21</height>
         </rect>
        </property>
@@ -634,7 +634,7 @@
         <x>590</x>
         <y>370</y>
         <width>113</width>
-        <height>91</height>
+        <height>21</height>
        </rect>
       </property>
      </widget>
@@ -672,6 +672,29 @@
       </property>
       <property name="text">
        <string>Variante de jeu</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nbrPointFaute">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>80</y>
+        <width>113</width>
+        <height>33</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>80</y>
+        <width>67</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>faute</string>
       </property>
      </widget>
     </widget>
